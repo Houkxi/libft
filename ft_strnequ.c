@@ -1,33 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strnstr.c                                       :+:      :+:    :+:   */
+/*   ft_strnequ.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mmanley <mmanley@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/11/08 18:26:51 by mmanley           #+#    #+#             */
-/*   Updated: 2017/11/16 18:14:01 by mmanley          ###   ########.fr       */
+/*   Created: 2017/11/16 16:17:00 by mmanley           #+#    #+#             */
+/*   Updated: 2017/11/16 16:23:38 by mmanley          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <string.h>
 #include "../includes/proto_ft.h"
 
-char	*ft_strnstr(const char *haystack, const char *needle, size_t len)
+int		ft_strnequ(const char *s1, const char *s2, size_t n)
 {
-	size_t i;
-
-	i = 0;
-	while (haystack[i] && needle[i] && haystack[i] == needle[i] && len != 0)
+	if (s1 != NULL && s2 != NULL)
 	{
-		i++;
-		len--;
+		if (ft_strncmp(s1, s2, n) == 0)
+			return (1);
+		else
+			return(0);
 	}
-	if (len == 0 && needle[i])
-		return (0);
-	if (!needle[i])
-		return((char*)haystack);
-	if (!haystack[i])
-		return(0);
-	return (ft_strnstr((char*)haystack + 1, needle, len - 1));
 }
