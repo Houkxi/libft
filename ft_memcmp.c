@@ -6,18 +6,18 @@
 /*   By: mmanley <mmanley@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/10 15:26:24 by mmanley           #+#    #+#             */
-/*   Updated: 2017/11/15 11:48:38 by mmanley          ###   ########.fr       */
+/*   Updated: 2017/11/17 11:18:54 by mmanley          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <string.h>
-#include "../includes/proto_ft.h"
+#include "libft.h"
 
 int		ft_memcmp(const void *s1, const void *s2, size_t n)
 {
-	unsigned char *str1;
-	unsigned char *str2;
-	size_t i;
+	unsigned char	*str1;
+	unsigned char	*str2;
+	size_t			i;
 
 	str1 = (unsigned char*)s1;
 	str2 = (unsigned char*)s2;

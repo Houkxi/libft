@@ -6,12 +6,12 @@
 /*   By: mmanley <mmanley@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/08 15:47:17 by mmanley           #+#    #+#             */
-/*   Updated: 2017/11/15 11:49:43 by mmanley          ###   ########.fr       */
+/*   Updated: 2017/11/17 11:20:40 by mmanley          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <string.h>
-#include "../includes/proto_ft.h"
+#include "libft.h"
 
 size_t	ft_strlen(const char *str)
 {

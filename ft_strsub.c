@@ -1,34 +1,42 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strncpy.c                                       :+:      :+:    :+:   */
+/*   ft_strsub.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mmanley <mmanley@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/11/08 15:18:55 by mmanley           #+#    #+#             */
-/*   Updated: 2017/11/20 10:35:51 by mmanley          ###   ########.fr       */
+/*   Created: 2017/11/17 10:04:21 by mmanley           #+#    #+#             */
+/*   Updated: 2017/11/20 11:08:11 by mmanley          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <string.h>
+#include <stdlib.h>
 #include "libft.h"
 
-char	*ft_strncpy(char *dst, const char *src, size_t len)
+char	*ft_strsub(const char *s, unsigned int start, size_t len)
 {
-	size_t i;
+	unsigned char	*new;
+	size_t			size;
+	unsigned int	count;
 
-	i = 0;
-	while (src[i] && i < len)
+	if (s != NULL)
 	{
-		if (dst == NULL)
+		size = ft_strlen(s);
+		count = 0;
+		if ((new = (unsigned char*)malloc(sizeof(char) * (len + 1))) == NULL)
 			return (NULL);
-		dst[i] = src[i];
-		i++;
+		if (start + len > size)
+			return (NULL);
+		while (len > 0 && s[start])
+		{
+			new[count] = s[start];
+			start++;
+			count++;
+			len--;
+		}
+		new[count] = '\0';
+		return ((char*)new);
 	}
-	while (i < len)
-	{
-		dst[i] = '\0';
-		i++;
-	}
-	return (dst);
+	return (NULL);
 }

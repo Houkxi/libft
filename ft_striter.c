@@ -6,17 +6,21 @@
 /*   By: mmanley <mmanley@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/16 13:51:09 by mmanley           #+#    #+#             */
-/*   Updated: 2017/11/16 13:59:03 by mmanley          ###   ########.fr       */
+/*   Updated: 2017/11/20 15:12:35 by mmanley          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <string.h>
+#include "libft.h"
 
 void	ft_striter(char *s, void (*f)(char*))
 {
-	while (*s != NULL && s != NULL)
+	if (s != NULL && *s)
 	{
-		f(s);
-		s++;
+		while (*s && s != NULL)
+		{
+			f(s);
+			s++;
+		}
 	}
 }

@@ -6,15 +6,21 @@
 /*   By: mmanley <mmanley@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/16 11:39:40 by mmanley           #+#    #+#             */
-/*   Updated: 2017/11/16 11:56:32 by mmanley          ###   ########.fr       */
+/*   Updated: 2017/11/20 12:25:10 by mmanley          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 void	ft_strclr(char *str)
 {
-	while (str)
+	int i;
+
+	i = 0;
+	if (str)
 	{
-		*str = 0;
-		str++;
+		while (str[i])
+		{
+			str[i] = 0;
+			i++;
+		}
 	}
 }

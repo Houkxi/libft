@@ -6,11 +6,11 @@
 /*   By: mmanley <mmanley@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/08 19:05:14 by mmanley           #+#    #+#             */
-/*   Updated: 2017/11/15 11:49:11 by mmanley          ###   ########.fr       */
+/*   Updated: 2017/11/17 11:20:06 by mmanley          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/proto_ft.h"
+#include "libft.h"
 
 char	*ft_strcat(char *restrict s1, const char *restrict s2)
 {

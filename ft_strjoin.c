@@ -1,26 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strnequ.c                                       :+:      :+:    :+:   */
+/*   ft_strjoin.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mmanley <mmanley@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/11/16 16:17:00 by mmanley           #+#    #+#             */
-/*   Updated: 2017/11/20 12:18:26 by mmanley          ###   ########.fr       */
+/*   Created: 2017/11/17 11:28:50 by mmanley           #+#    #+#             */
+/*   Updated: 2017/11/20 11:18:20 by mmanley          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <string.h>
 #include "libft.h"
 
-int		ft_strnequ(const char *s1, const char *s2, size_t n)
+char	*ft_strjoin(const char *s1, const char *s2)
 {
+	char			*new;
+	size_t			counter1;
+	size_t			counter2;
+
 	if (s1 != NULL && s2 != NULL)
 	{
-		if (ft_strncmp(s1, s2, n) == 0 || n == 0)
-			return (1);
-		else
-			return (0);
+		counter1 = ft_strlen(s1);
+		counter2 = ft_strlen(s2) + 1;
+		if ((new = (char*)malloc(1 * (counter1 + counter2))) == 0)
+			return (NULL);
+		ft_strncpy(new, s1, counter1);
+		ft_strncat(new, s2, counter2);
+		new[counter1 + counter2 + 1] = '\0';
+		return (new);
 	}
-	return (0);
+	return (NULL);
 }

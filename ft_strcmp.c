@@ -6,17 +6,17 @@
 /*   By: mmanley <mmanley@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/08 16:12:40 by mmanley           #+#    #+#             */
-/*   Updated: 2017/11/15 11:49:23 by mmanley          ###   ########.fr       */
+/*   Updated: 2017/11/17 11:20:17 by mmanley          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/proto_ft.h"
+#include "libft.h"
 
 int		ft_strcmp(const char *s1, const char *s2)
 {
-	int i;
-	unsigned char *str1;
-	unsigned char *str2;
+	int				i;
+	unsigned char	*str1;
+	unsigned char	*str2;
 
 	i = 0;
 	str1 = (unsigned char*)s1;

@@ -6,12 +6,12 @@
 /*   By: mmanley <mmanley@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/15 18:15:12 by mmanley           #+#    #+#             */
-/*   Updated: 2017/11/16 19:14:06 by mmanley          ###   ########.fr       */
+/*   Updated: 2017/11/17 11:19:59 by mmanley          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <string.h>
-#include "../includes/proto_ft.h"
+#include "libft.h"
 
 void	ft_putstr(char const *str)
 {

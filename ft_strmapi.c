@@ -1,26 +1,41 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strnequ.c                                       :+:      :+:    :+:   */
+/*   ft_strmapi.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mmanley <mmanley@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/11/16 16:17:00 by mmanley           #+#    #+#             */
-/*   Updated: 2017/11/20 12:18:26 by mmanley          ###   ########.fr       */
+/*   Created: 2017/11/17 15:45:07 by mmanley           #+#    #+#             */
+/*   Updated: 2017/11/20 11:22:51 by mmanley          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <string.h>
+#include <stdlib.h>
 #include "libft.h"
 
-int		ft_strnequ(const char *s1, const char *s2, size_t n)
+char	*ft_strmapi(char *s, char (*f)(unsigned int, char))
 {
-	if (s1 != NULL && s2 != NULL)
+	char			*new;
+	int				i;
+	unsigned int	j;
+
+	j = 0;
+	i = 0;
+	if (s != NULL && s[i])
 	{
-		if (ft_strncmp(s1, s2, n) == 0 || n == 0)
-			return (1);
-		else
-			return (0);
+		i = ft_strlen(s) + 1;
+		if ((new = (char*)malloc(1 * i)) == 0)
+			return (NULL);
+		i = 0;
+		while (s[i])
+		{
+			new[i] = f(j, s[i]);
+			i++;
+			j++;
+		}
+		new[i] = '\0';
+		return (new);
 	}
-	return (0);
+	return (NULL);
 }

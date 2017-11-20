@@ -6,20 +6,20 @@
 /*   By: mmanley <mmanley@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/10 12:19:56 by mmanley           #+#    #+#             */
-/*   Updated: 2017/11/15 11:48:44 by mmanley          ###   ########.fr       */
+/*   Updated: 2017/11/20 14:27:48 by mmanley          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <string.h>
-#include "../includes/proto_ft.h"
+#include "libft.h"
 
-void	*ft_memcpy(void *restrict dst, const void *restrict src, size_t n)
+void	*ft_memcpy(void *dst, const void *src, size_t n)
 {
-	char *dest;
-	unsigned char *srcs;
-	size_t i;
+	char			*dest;
+	unsigned char	*srcs;
+	size_t			i;
 
-	dest= dst;
+	dest = dst;
 	srcs = (unsigned char*)src;
 	i = 0;
 	while (i < n)
@@ -27,5 +27,5 @@ void	*ft_memcpy(void *restrict dst, const void *restrict src, size_t n)
 		dest[i] = srcs[i];
 		i++;
 	}
-	return(dst);
+	return (dst);
 }

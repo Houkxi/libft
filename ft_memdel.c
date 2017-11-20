@@ -6,7 +6,7 @@
 /*   By: mmanley <mmanley@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/16 11:15:16 by mmanley           #+#    #+#             */
-/*   Updated: 2017/11/16 12:01:27 by mmanley          ###   ########.fr       */
+/*   Updated: 2017/11/20 13:46:52 by mmanley          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 
 void	ft_memdel(void **ap)
 {
-	if (*ap != NULL && ap != NULL)
+	if (ap != NULL)
 	{
 		free(*ap);
 		*ap = NULL;

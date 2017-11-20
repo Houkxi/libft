@@ -6,22 +6,20 @@
 /*   By: mmanley <mmanley@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/09 17:57:46 by mmanley           #+#    #+#             */
-/*   Updated: 2017/11/15 11:50:05 by mmanley          ###   ########.fr       */
+/*   Updated: 2017/11/20 14:21:48 by mmanley          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <string.h>
-#include "../includes/proto_ft.h"
+#include "libft.h"
 
 char	*ft_strrchr(const char *s, int c)
 {
-	int i;
-	char test;
+	int		i;
+	char	test;
 
 	i = 0;
 	test = c;
-	if (!s[i])
-		return (0);
 	i = ft_strlen(s);
 	while (i > 0)
 	{
@@ -29,5 +27,8 @@ char	*ft_strrchr(const char *s, int c)
 			return ((char*)s + i);
 		i--;
 	}
-	return (0);
+	if (s[i] == c)
+		return ((char*)s + i);
+	else
+		return (0);
 }

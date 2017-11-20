@@ -6,12 +6,12 @@
 /*   By: mmanley <mmanley@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/15 18:37:16 by mmanley           #+#    #+#             */
-/*   Updated: 2017/11/15 18:54:06 by mmanley          ###   ########.fr       */
+/*   Updated: 2017/11/17 11:19:23 by mmanley          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <unistd.h>
-#include "../includes/proto_ft.h"
+#include "libft.h"
 
 void	ft_putchar_fd(char c, int fd)
 {

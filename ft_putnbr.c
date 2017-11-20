@@ -6,26 +6,29 @@
 /*   By: mmanley <mmanley@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/15 18:18:25 by mmanley           #+#    #+#             */
-/*   Updated: 2017/11/15 18:26:37 by mmanley          ###   ########.fr       */
+/*   Updated: 2017/11/20 12:19:30 by mmanley          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/proto_ft.h"
+#include "libft.h"
 
 void	ft_putnbr(int nb)
 {
-	if (nb < 0)
+	long n;
+
+	n = nb;
+	if (n < 0)
 	{
 		ft_putchar('-');
-		nb *= -1;
+		n *= -1;
 	}
-	if (nb >= 0 && nb <= 9)
+	if (n >= 0 && n <= 9)
 	{
-		ft_putchar(nb + 48);
+		ft_putchar(n + 48);
 	}
-	if (nb >= 10)
+	if (n >= 10)
 	{
-		ft_putnbr(nb / 10);
-		ft_putnbr(nb % 10);
+		ft_putnbr(n / 10);
+		ft_putnbr(n % 10);
 	}
 }

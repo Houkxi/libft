@@ -6,16 +6,16 @@
 /*   By: mmanley <mmanley@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/16 11:37:02 by mmanley           #+#    #+#             */
-/*   Updated: 2017/11/16 11:56:14 by mmanley          ###   ########.fr       */
+/*   Updated: 2017/11/20 13:44:10 by mmanley          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
 #include <string.h>
 
-void	ft_strdel(void **ap)
+void	ft_strdel(char **ap)
 {
-	if (*ap != NULL && ap != NULL)
+	if (ap != NULL && *ap)
 	{
 		free(*ap);
 		*ap = NULL;

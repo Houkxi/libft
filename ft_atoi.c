@@ -6,33 +6,39 @@
 /*   By: mmanley <mmanley@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/08 14:33:57 by mmanley           #+#    #+#             */
-/*   Updated: 2017/11/15 11:47:03 by mmanley          ###   ########.fr       */
+/*   Updated: 2017/11/20 15:06:44 by mmanley          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/proto_ft.h"
+#include "libft.h"
+
+int		white_space_counter(char *tmp, int i, int *sign)
+{
+	while (tmp[i] == '\t' || tmp[i] == '\n' || tmp[i] == '\r' || tmp[i] == '\v'
+			|| tmp[i] == '\f' || tmp[i] == ' ')
+		i++;
+	if (tmp[i] == '-' || tmp[i] == '+')
+	{
+		if (tmp[i] == '-')
+			*sign = -1;
+		i++;
+	}
+	return (i);
+}
 
 int		ft_atoi(const char *str)
 {
-	int i;
-	unsigned long long a;
-	int sign;
-	char *tmp;
+	int					i;
+	unsigned long long	a;
+	int					sign;
+	char				*tmp;
 
 	i = 0;
 	a = 0;
 	sign = 1;
 	tmp = (char*)str;
-	while (tmp[i] == '\t' || tmp[i] == '\n' || tmp[i] == '\r' || tmp[i] == '\v'
-			|| tmp[i] == '\f' || tmp[i] == ' ')
-				i++;
-	if (tmp[i] == '-' || tmp[i] == '+')
-	{
-		if (tmp[i] == '-')
-			sign = -1;
-		i++;
-	}
-	while (tmp[i]>= '0' && tmp[i] <= '9')
+	i = white_space_counter(tmp, 0, &sign);
+	while (tmp[i] >= '0' && tmp[i] <= '9')
 	{
 		a = (a * 10) + (tmp[i] - 48);
 		i++;
