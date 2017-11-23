@@ -6,7 +6,7 @@
 /*   By: mmanley <mmanley@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/10 16:28:10 by mmanley           #+#    #+#             */
-/*   Updated: 2017/11/20 14:28:00 by mmanley          ###   ########.fr       */
+/*   Updated: 2017/11/23 16:48:58 by mmanley          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@ int		ft_isalpha(int c);
 int		ft_isascii(int c);
 int		ft_isdigit(int c);
 int		ft_isprint(int c);
+char	*ft_itoa(int n);
 void	*ft_memalloc(size_t size);
 void	*ft_memccpy(void *restrict dst, const void *restrict src, int c, size_t n);
 void	*ft_memchr(const void *s, int c, size_t n);
@@ -61,10 +62,22 @@ int		ft_strnequ(const char *s1, const char *s2, size_t n);
 char	*ft_strnew(size_t size);
 char	*ft_strnstr(const char *haystack, const char *needle, size_t len);
 char	*ft_strrchr(const char *str, int c);
+char	**ft_strsplit(char const *s, char c);
 char	*ft_strstr(const char *haystack, const char *needle);
 char	*ft_strsub(const char *s, unsigned int start, size_t len);
 char	*ft_strtrim(char const *s);
 int		ft_tolower(int c);
 int		ft_toupper(int c);
+
+typedef struct 		s_list
+{
+	void			*content;
+	size_t 			content_size;
+	struct s_list	*next;
+}					t_list;
+
+t_list	*ft_lstnew(void const *content, size_t content_size);
+void	ft_lstdelone(t_list **alst, void (*del)(void*, size_t));
+void	ft_lstdel(t_list **alst, void (*del)(void *, size_t));
 
 #endif

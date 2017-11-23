@@ -6,7 +6,7 @@
 /*   By: mmanley <mmanley@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/22 15:48:26 by mmanley           #+#    #+#             */
-/*   Updated: 2017/11/22 18:14:47 by mmanley          ###   ########.fr       */
+/*   Updated: 2017/11/23 20:03:59 by mmanley          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,12 +53,12 @@ char	*ft_itoa(int n)
 	count = nbr_count(i, 1);
 	if ((dst = (char*)malloc(sizeof(char) * (count + 1))) == 0)
 		return (NULL);
-	dst[count + 1] = '\0';
 	if (sign == -1)
 	{
 		dst[0] = '-';
 		sign = 0;
 	}
 	dst = nbr_to_str(i, dst, count - sign);
+	dst[count + 1] = '\0';
 	return (dst);
 }

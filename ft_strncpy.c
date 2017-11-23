@@ -6,7 +6,7 @@
 /*   By: mmanley <mmanley@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/08 15:18:55 by mmanley           #+#    #+#             */
-/*   Updated: 2017/11/20 10:35:51 by mmanley          ###   ########.fr       */
+/*   Updated: 2017/11/23 19:18:54 by mmanley          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,6 @@ char	*ft_strncpy(char *dst, const char *src, size_t len)
 	i = 0;
 	while (src[i] && i < len)
 	{
-		if (dst == NULL)
-			return (NULL);
 		dst[i] = src[i];
 		i++;
 	}

@@ -6,7 +6,7 @@
 /*   By: mmanley <mmanley@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/20 15:17:38 by mmanley           #+#    #+#             */
-/*   Updated: 2017/11/22 18:15:51 by mmanley          ###   ########.fr       */
+/*   Updated: 2017/11/23 18:55:55 by mmanley          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,107 +14,86 @@
 #include <stdlib.h>
 #include "libft.h"
 
-void	size_word(const char *s, char c, char **tab, int i)
+char	**tab_creator(char c, const char *s, char **tab, int i)
 {
-	int j;
-	int k;
+	int	j;
+	int	k;
 
 	j = 0;
 	k = 0;
-	while (s[i])
+	while (s[k])
 	{
-		while (s[i] && s[i] != c)
-		{
-			if (s[i] && s[i] == c)
-				i++;
-			j++;
-			i++;
-		}
-		if (j != 0)
-		{
-			tab[k] = (char*)malloc(sizeof(char) * (j + 1));
-			ft_bzero(tab[k], j);
+		while (s[k] && s[k] == c)
 			k++;
-			j = 0;
-		}
-		i++;
-	}
-	if (k == 0)
-	{
-		tab[k] = (char*)malloc(sizeof(char) * (1));
-		tab[k][0] = '\0';
-	}
-}
-
-int		count_words(const char *s, char c)
-{
-	int wordcount;
-	int i;
-
-	wordcount = 0;
-	i = 0;
-	while (s[i])
-	{
-		if ((s[i] == c && s[i + 1] != '\0' && s[i + 1] != c) ||
-		(wordcount == 0 && s[wordcount] != c))
+		while (s[k] && s[k] != c)
 		{
-			wordcount++;
 			i++;
-		}
-		else
-			i++;
-	}
-	return (wordcount);
-}
-
-char	**tab_cpy(char **tab, const char *s, char c, int i)
-{
-	int j;
-	int k;
-
-	j = 0;
-	k = 0;
-	while (s[i])
-	{
-		while (s[i] && s[i] != c)
-		{
-			tab[k][j] = s[i];
-			j++;
-			i++;
-		}
-		while (s[i] && s[i] == c)
-			i++;
-		if (j != 0)
-		{
-			tab[k][j + 1] = '\0';
-			j = 0;
 			k++;
+		}
+		if (i != 0)
+		{
+			tab[j] = ft_strnew(i);
+			j++;
+			i = 0;
 		}
 	}
 	return (tab);
 }
 
-char	**ft_strsplit(char const *s, char c)
+int		word_counter(const char *s, char c, int i, int j)
 {
-	char	**tab;
-	int		i;
-	int		j;
-	int		wordcounted;
+	while (s[i])
+	{
+		if (s[i] && s[i] != c)
+		{
+			j++;
+			while (s[i] && s[i] != c)
+				i++;
+		}
+		while (s[i] && s[i] == c)
+			i++;
+	}
+	return (j);
+}
 
-	tab = NULL;
-	i = 0;
+void	word_cpy(char c, const char *s, char **tab, int i)
+{
+	int	j;
+	int	k;
+
+	j = 0;
+	k = 0;
+	while (s[k])
+	{
+		while (s[k] && s[k] == c)
+			k++;
+		while (s[k] && s[k] != c)
+		{
+			tab[j][i] = s[k];
+			i++;
+			k++;
+		}
+		if (i != 0)
+		{
+			tab[j][i] = '\0';
+			j++;
+			i = 0;
+		}
+	}
+}
+
+char	**ft_strsplit(const char *s, char c)
+{
+	int		counted;
+	char	**tab;
+
 	if (!s)
 		return (NULL);
-	j = ft_strlen(s);
-	if (s[i])
-	{
-		wordcounted = count_words(s, c);
-		if ((tab = (char**)malloc(sizeof(char*) * (wordcounted + 1))) == NULL)
-			return (NULL);
-		tab[wordcounted + 1] = 0;
-		size_word(s, c, tab, 0);
-		tab_cpy(tab, s, c, 0);
-		return (tab);
-	}
-	return (NULL);
+	counted = word_counter(s, c, 0, 0);
+	if ((tab = (char**)malloc(sizeof(char*) * (counted + 1))) == 0)
+		return (NULL);
+	tab[counted] = NULL;
+	tab_creator(c, s, tab, 0);
+	word_cpy(c, s, tab, 0);
+	return (tab);
 }
