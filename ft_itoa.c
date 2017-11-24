@@ -6,7 +6,7 @@
 /*   By: mmanley <mmanley@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/22 15:48:26 by mmanley           #+#    #+#             */
-/*   Updated: 2017/11/23 20:03:59 by mmanley          ###   ########.fr       */
+/*   Updated: 2017/11/24 13:22:13 by mmanley          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,12 +48,12 @@ char	*ft_itoa(int n)
 	if (n < 0)
 	{
 		i *= -1;
-		sign = -1;
+		sign = 2;
 	}
 	count = nbr_count(i, 1);
-	if ((dst = (char*)malloc(sizeof(char) * (count + 1))) == 0)
+	if ((dst = (char*)malloc(sizeof(char) * (count + sign))) == 0)
 		return (NULL);
-	if (sign == -1)
+	if (sign == 2)
 	{
 		dst[0] = '-';
 		sign = 0;

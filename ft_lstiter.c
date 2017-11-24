@@ -1,30 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strncat.c                                       :+:      :+:    :+:   */
+/*   ft_lstiter.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mmanley <mmanley@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/11/09 11:30:30 by mmanley           #+#    #+#             */
-/*   Updated: 2017/11/24 15:42:46 by mmanley          ###   ########.fr       */
+/*   Created: 2017/11/24 12:17:25 by mmanley           #+#    #+#             */
+/*   Updated: 2017/11/24 13:06:46 by mmanley          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <string.h>
+#include <stdlib.h>
 #include "libft.h"
 
-char	*ft_strncat(char *s1, const char *s2, size_t len)
+void	ft_lstiter(t_list *lst, void (*f)(t_list *elem))
 {
-	size_t i;
-	size_t j;
+	t_list *tmp;
 
-	i = ft_strlen(s1);
-	j = 0;
-	while (s2[j] && j < len)
+	tmp = lst;
+	while (lst != NULL)
 	{
-		s1[i] = s2[j];
-		i++;
-		j++;
+		tmp = lst;
+		lst = lst->next;
+		f(tmp);
 	}
-	s1[i] = '\0';
-	return (s1);
 }

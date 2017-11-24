@@ -6,7 +6,7 @@
 #    By: mmanley <mmanley@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/11/08 11:58:31 by mmanley           #+#    #+#              #
-#    Updated: 2017/11/23 16:48:46 by mmanley          ###   ########.fr        #
+#    Updated: 2017/11/24 12:40:22 by mmanley          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -23,7 +23,8 @@ INC = ./libft.h
 SRC = ./ft_atoi.c ./ft_bzero.c \
 	./ft_isalnum.c ./ft_isalpha.c ./ft_isascii.c ./ft_isdigit.c \
 	./ft_isprint.c ./ft_itoa.c\
-	./ft_lstnew.c ./ft_lstdelone.c ./ft_lstdel.c\
+	./ft_lstnew.c ./ft_lstdelone.c ./ft_lstdel.c ./ft_lstadd.c ./ft_lstiter.c\
+	./ft_lstmap.c\
 	./ft_memalloc.c ./ft_memccpy.c ./ft_memchr.c ./ft_memcmp.c \
 	./ft_memcpy.c ./ft_memdel.c ./ft_memmove.c ./ft_memset.c \
 	./ft_putchar_fd.c ./ft_putchar.c ./ft_putendl_fd.c \
@@ -51,7 +52,7 @@ OBJS =  ft_memset.o ft_bzero.o ft_memcpy.o ft_memccpy.o \
 		ft_putendl.o ft_memalloc.o ft_memdel.o ft_strclr.o ft_strequ.o \
 		ft_strnequ.o ft_strsub.o ft_strjoin.o ft_strtrim.o ft_strmapi.o \
 		ft_striter.o ft_striteri.o ft_strsplit.o ft_lstnew.o ft_lstdelone.o\
-		ft_lstdel.o\
+		ft_lstdel.o ft_lstadd.o ft_lstiter.o ft_lstmap.o\
 
 all : $(NAME)
 

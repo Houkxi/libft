@@ -1,30 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strncat.c                                       :+:      :+:    :+:   */
+/*   ft_lstmap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mmanley <mmanley@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/11/09 11:30:30 by mmanley           #+#    #+#             */
-/*   Updated: 2017/11/24 15:42:46 by mmanley          ###   ########.fr       */
+/*   Created: 2017/11/24 12:32:27 by mmanley           #+#    #+#             */
+/*   Updated: 2017/11/24 15:16:30 by mmanley          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <string.h>
+#include <stdlib.h>
 #include "libft.h"
 
-char	*ft_strncat(char *s1, const char *s2, size_t len)
+t_list	*ft_lstmap(t_list *lst, t_list *(*f)(t_list *elem))
 {
-	size_t i;
-	size_t j;
+	t_list	*new;
 
-	i = ft_strlen(s1);
-	j = 0;
-	while (s2[j] && j < len)
+	if (lst && f)
 	{
-		s1[i] = s2[j];
-		i++;
-		j++;
+		new = f(lst);
+		lst = lst->next;
+		if (lst)
+			new->next = ft_lstmap(lst, f);
+		return (new);
 	}
-	s1[i] = '\0';
-	return (s1);
+	return (NULL);
 }
