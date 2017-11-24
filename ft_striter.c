@@ -6,7 +6,7 @@
 /*   By: mmanley <mmanley@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/16 13:51:09 by mmanley           #+#    #+#             */
-/*   Updated: 2017/11/20 15:12:35 by mmanley          ###   ########.fr       */
+/*   Updated: 2017/11/24 18:12:50 by mmanley          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,12 +15,15 @@
 
 void	ft_striter(char *s, void (*f)(char*))
 {
-	if (s != NULL && *s)
+	int i;
+
+	i = 0;
+	if (s != NULL && f)
 	{
-		while (*s && s != NULL)
+		while (s[i])
 		{
-			f(s);
-			s++;
+			(*f)(&s[i]);
+			i++;
 		}
 	}
 }

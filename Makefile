@@ -6,15 +6,13 @@
 #    By: mmanley <mmanley@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/11/08 11:58:31 by mmanley           #+#    #+#              #
-#    Updated: 2017/11/24 12:40:22 by mmanley          ###   ########.fr        #
+#    Updated: 2017/11/24 16:54:07 by mmanley          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = libft.a
 
 CC = gcc
-
-#LIB = libft.a
 
 FLAGS = -Wall -Wextra -Werror
 
@@ -40,30 +38,15 @@ SRC = ./ft_atoi.c ./ft_bzero.c \
 	./ft_tolower.c ./ft_toupper.c \
 
 
-OBJS =  ft_memset.o ft_bzero.o ft_memcpy.o ft_memccpy.o \
-		ft_memmove.o ft_memchr.o ft_memcmp.o ft_strlen.o \
-		ft_strdup.o ft_strcpy.o ft_strncpy.o ft_strcat.o \
-		ft_strncat.o ft_strlcat.o ft_strchr.o ft_strrchr.o \
-		ft_strstr.o ft_strnstr.o ft_strcmp.o ft_strncmp.o \
-		ft_atoi.o ft_isalpha.o ft_isdigit.o ft_isalnum.o ft_itoa.o\
-		ft_isascii.o ft_isprint.o ft_toupper.o ft_tolower.o \
-		ft_putnbr.o ft_putchar.o ft_putstr.o ft_strmap.o ft_strnew.o ft_strdel.o\
-		ft_putnbr_fd.o ft_putstr_fd.o ft_putchar_fd.o ft_putendl_fd.o \
-		ft_putendl.o ft_memalloc.o ft_memdel.o ft_strclr.o ft_strequ.o \
-		ft_strnequ.o ft_strsub.o ft_strjoin.o ft_strtrim.o ft_strmapi.o \
-		ft_striter.o ft_striteri.o ft_strsplit.o ft_lstnew.o ft_lstdelone.o\
-		ft_lstdel.o ft_lstadd.o ft_lstiter.o ft_lstmap.o\
+OBJS = $(SRC:.c=.o)
 
 all : $(NAME)
 
-#$(NAME) : $(LIB)
-#	$(CC) -o $(NAME) $(LIB) $(FLAGS)
 
-$(NAME) : $(OBJS)
+$(NAME) :
+	$(CC) -c $(FLAGS) $(SRC) -I $(INC)
 	ar rc $(NAME) $(OBJS)
-
-$(OBJS) :
-		$(CC) -c $(SRC)
+	ranlib $(NAME)
 
 clean :
 	@rm -f $(OBJS)

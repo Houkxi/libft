@@ -6,7 +6,7 @@
 /*   By: mmanley <mmanley@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/22 15:48:26 by mmanley           #+#    #+#             */
-/*   Updated: 2017/11/24 13:22:13 by mmanley          ###   ########.fr       */
+/*   Updated: 2017/11/24 19:36:52 by mmanley          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 #include <stdlib.h>
 #include <string.h>
 
-int		nbr_count(long n, int i)
+static int		nbr_count(long n, int i)
 {
 	if (n < 10)
 		return (i);
@@ -22,7 +22,7 @@ int		nbr_count(long n, int i)
 		return (nbr_count(n / 10, i + 1));
 }
 
-char	*nbr_to_str(long n, char *dst, int count)
+static char		*nbr_to_str(long n, char *dst, int count)
 {
 	if (n >= 0 && n <= 9)
 	{
@@ -36,12 +36,12 @@ char	*nbr_to_str(long n, char *dst, int count)
 	return (dst);
 }
 
-char	*ft_itoa(int n)
+char			*ft_itoa(int n)
 {
-	char	*dst;
-	long	sign;
-	int		count;
-	long	i;
+	char		*dst;
+	long		sign;
+	int			count;
+	long		i;
 
 	sign = 1;
 	i = n;

@@ -6,13 +6,13 @@
 /*   By: mmanley <mmanley@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/08 14:33:57 by mmanley           #+#    #+#             */
-/*   Updated: 2017/11/20 15:06:44 by mmanley          ###   ########.fr       */
+/*   Updated: 2017/11/24 19:36:36 by mmanley          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int		white_space_counter(char *tmp, int i, int *sign)
+static int				white_space_counter(char *tmp, int i, int *sign)
 {
 	while (tmp[i] == '\t' || tmp[i] == '\n' || tmp[i] == '\r' || tmp[i] == '\v'
 			|| tmp[i] == '\f' || tmp[i] == ' ')
@@ -26,7 +26,7 @@ int		white_space_counter(char *tmp, int i, int *sign)
 	return (i);
 }
 
-int		ft_atoi(const char *str)
+int						ft_atoi(const char *str)
 {
 	int					i;
 	unsigned long long	a;

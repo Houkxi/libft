@@ -6,7 +6,7 @@
 /*   By: mmanley <mmanley@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/20 15:17:38 by mmanley           #+#    #+#             */
-/*   Updated: 2017/11/23 18:55:55 by mmanley          ###   ########.fr       */
+/*   Updated: 2017/11/24 19:37:40 by mmanley          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 #include <stdlib.h>
 #include "libft.h"
 
-char	**tab_creator(char c, const char *s, char **tab, int i)
+static char	**tab_creator(char c, const char *s, char **tab, int i)
 {
 	int	j;
 	int	k;
@@ -40,7 +40,7 @@ char	**tab_creator(char c, const char *s, char **tab, int i)
 	return (tab);
 }
 
-int		word_counter(const char *s, char c, int i, int j)
+static int	word_counter(const char *s, char c, int i, int j)
 {
 	while (s[i])
 	{
@@ -56,7 +56,7 @@ int		word_counter(const char *s, char c, int i, int j)
 	return (j);
 }
 
-void	word_cpy(char c, const char *s, char **tab, int i)
+static void	word_cpy(char c, const char *s, char **tab, int i)
 {
 	int	j;
 	int	k;
@@ -82,7 +82,7 @@ void	word_cpy(char c, const char *s, char **tab, int i)
 	}
 }
 
-char	**ft_strsplit(const char *s, char c)
+char		**ft_strsplit(const char *s, char c)
 {
 	int		counted;
 	char	**tab;
