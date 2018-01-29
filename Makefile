@@ -6,7 +6,7 @@
 #    By: mmanley <mmanley@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/11/08 11:58:31 by mmanley           #+#    #+#              #
-#    Updated: 2017/11/24 16:54:07 by mmanley          ###   ########.fr        #
+#    Updated: 2018/01/29 20:39:04 by mmanley          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,42 +16,69 @@ CC = gcc
 
 FLAGS = -Wall -Wextra -Werror
 
-INC = ./libft.h
+INC = includes/
 
-SRC = ./ft_atoi.c ./ft_bzero.c \
-	./ft_isalnum.c ./ft_isalpha.c ./ft_isascii.c ./ft_isdigit.c \
-	./ft_isprint.c ./ft_itoa.c\
-	./ft_lstnew.c ./ft_lstdelone.c ./ft_lstdel.c ./ft_lstadd.c ./ft_lstiter.c\
-	./ft_lstmap.c\
-	./ft_memalloc.c ./ft_memccpy.c ./ft_memchr.c ./ft_memcmp.c \
-	./ft_memcpy.c ./ft_memdel.c ./ft_memmove.c ./ft_memset.c \
-	./ft_putchar_fd.c ./ft_putchar.c ./ft_putendl_fd.c \
-	./ft_putendl.c ./ft_putnbr_fd.c ./ft_putnbr.c \
-	./ft_putstr_fd.c ./ft_putstr.c \
-	./ft_strcat.c ./ft_strchr.c ./ft_strcmp.c ./ft_strcpy.c  \
-	./ft_strdup.c ./ft_strlcat.c ./ft_strlen.c ./ft_strncat.c \
-	./ft_strncmp.c ./ft_strncpy.c ./ft_strnstr.c ./ft_strrchr.c\
-	./ft_strstr.c ./ft_strdel.c ./ft_strnew.c ./ft_strmap.c\
-	./ft_strclr.c ./ft_strequ.c ./ft_strnequ.c ./ft_strsub.c ./ft_strjoin.c\
-	./ft_strtrim.c ./ft_strmapi.c ./ft_striter.c ./ft_striteri.c \
-	./ft_strsplit.c\
-	./ft_tolower.c ./ft_toupper.c \
+OBJ_INC = ../includes
 
+OBJ_PATH = objs/
 
-OBJS = $(SRC:.c=.o)
+SRC_PATH = srcs/
+
+SRC_L = lst_ch/
+
+SRC_P = put/
+
+SRC_S = strs/
+
+SRC_M = mems/
+
+SRC_N = nbrs/
+
+RED = \x1b[31m
+
+GREEN = \x1b[32m
+
+include nbrs/make.dep
+include mems/make.dep
+include lst_ch/make.dep
+include srcs/make.dep
+include strs/make.dep
+include put/make.dep
+
+OBJS_NAME =	$(SRCS:%.c=%.o)
+
+OBJS = $(addprefix $(OBJ_PATH), $(OBJS_NAME))
 
 all : $(NAME)
 
+$(NAME) : objs $(OBJS)
+	@ar rc $(NAME) $(OBJS)
+	@ranlib $(NAME)
+	@echo "\n${GREEN}Library build finished"
 
-$(NAME) :
-	$(CC) -c $(FLAGS) $(SRC) -I $(INC)
-	ar rc $(NAME) $(OBJS)
-	ranlib $(NAME)
+$(OBJ_PATH)%.o: %.c
+	@./gen_c.sh .
+	@$(CC) $(FLAGS) -o $@ -c $< -I $(INC)
+
+objs:
+	@mkdir -p objs
+	@mkdir -p objs/mems
+	@mkdir -p objs/nbrs
+	@mkdir -p objs/lst_ch
+	@mkdir -p objs/strs
+	@mkdir -p objs/srcs
+	@mkdir -p objs/put
+
+test :
+	./gen_c.sh $(SRC_PATH)
 
 clean :
-	@rm -f $(OBJS)
+	@rm -rf objs
+	@rm -rf $(OBJS_PATH)
 
 fclean : clean
 	@rm -rf $(NAME)
+	@echo "${RED}Wanted files deleted : .a & .o"
+	@echo "${GREEN}"
 
 re : fclean all
