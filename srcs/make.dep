@@ -10,4 +10,8 @@ SRCS += $(addprefix srcs/, ft_atoi.c\
 		ft_occ_counter.c\
 		ft_tolower.c\
 		ft_toupper.c \
-		get_next_line.c)
+		get_next_line.c\
+		ft_print_bits.c\
+		ft_print_bits_int.c\
+		ft_occ_pos.c\
+		ft_atoi_base.c)

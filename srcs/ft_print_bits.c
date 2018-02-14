@@ -1,27 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlen.c                                        :+:      :+:    :+:   */
+/*   ft_print_bits.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mmanley <mmanley@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/11/08 15:47:17 by mmanley           #+#    #+#             */
-/*   Updated: 2018/02/01 15:40:49 by mmanley          ###   ########.fr       */
+/*   Created: 2018/02/12 17:17:42 by mmanley           #+#    #+#             */
+/*   Updated: 2018/02/14 10:52:39 by mmanley          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <string.h>
 #include "libft.h"
 
-size_t	ft_strlen(const char *str)
+void	ft_print_bits(unsigned char octet, int size)
 {
-	int i;
+	int oct;
 
-	i = 0;
-	if (str)
+	oct = octet;
+	if (size)
 	{
-		while (str[i])
-			i++;
+		ft_print_bits(octet >> 1, size - 1);
+		if (size % 5 == 0)
+			ft_putchar(' ');
+		if (oct & 1)
+			ft_putchar('1');
+		else
+			ft_putchar('0');
 	}
-	return (i);
 }

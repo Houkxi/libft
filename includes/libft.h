@@ -6,7 +6,7 @@
 /*   By: mmanley <mmanley@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/10 16:28:10 by mmanley           #+#    #+#             */
-/*   Updated: 2018/01/18 19:02:56 by mmanley          ###   ########.fr       */
+/*   Updated: 2018/02/14 15:55:12 by mmanley          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@ typedef	struct		s_list
 	struct s_list	*prev;
 }					t_list;
 int					ft_atoi(const char *str);
+int					ft_atoi_base(char *s, char *base);
 void				ft_bzero(void *s, size_t n);
 long				ft_basic_op(long n1, long n2, char op);
 int					ft_count_btw(char *s, char c);
@@ -55,6 +56,9 @@ void				*ft_memmove(void *dst, const void *src, size_t len);
 void				*ft_memset(void *dest, int c, size_t len);
 char				**ft_newtab(int yaxis, int xaxis, char c);
 int					ft_occ_counter(char *s, char c);
+int					ft_occ_pos(const char *str, int c);
+void				ft_print_bits(unsigned char octet, int size);
+void				ft_print_bits_int(unsigned int octet, int size);
 void				ft_putchar_fd(char c, int fd);
 void				ft_putchar(char c);
 void				ft_putendl_fd(char const *str, int fd);
@@ -64,8 +68,11 @@ void				ft_putnbr(int nb);
 void				ft_putstr_fd(char const *str, int fd);
 void				ft_putstr(char const *str);
 int					rec_nbr_count(long nb, int i, int base);
+int					ft_rec_power(int nb, int power);
 void				ft_show_tab(char **tab);
 void				ft_show_tab_int(int **tab, int sizey, int sizex);
+void				ft_show_tab_preci(int **tab, int sizey, int sizex,
+											int pre);
 size_t				ft_sqr_root(size_t nb);
 char				*ft_strcat(char *s1, const char *s2);
 char				*ft_strchr(const char *s, int c);
@@ -78,6 +85,7 @@ int					ft_strequ(const char *s1, const char *s2);
 void				ft_striter(char *s, void (*f)(char*));
 void				ft_striteri(char *s, void (*f)(unsigned int, char*));
 char				*ft_strjoin(const char *s1, const char *s2);
+char				*ft_strjoin_free(char *s1, char *s2, int choice);
 size_t				ft_strlcat(char *dest, const char *src, size_t size);
 size_t				ft_strlen(const char *str);
 char				*ft_strmap(char *s, char (*f)(char));

@@ -1,27 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlen.c                                        :+:      :+:    :+:   */
+/*   ft_rec_power.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mmanley <mmanley@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/11/08 15:47:17 by mmanley           #+#    #+#             */
-/*   Updated: 2018/02/01 15:40:49 by mmanley          ###   ########.fr       */
+/*   Created: 2018/02/14 15:54:15 by mmanley           #+#    #+#             */
+/*   Updated: 2018/02/14 15:54:33 by mmanley          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <string.h>
 #include "libft.h"
 
-size_t	ft_strlen(const char *str)
+int			ft_rec_power(int nb, int power)
 {
-	int i;
-
-	i = 0;
-	if (str)
-	{
-		while (str[i])
-			i++;
-	}
-	return (i);
+	if (power == 0)
+		return (1);
+	if (power > 0)
+		return (nb * ft_rec_power(nb, power - 1));
+	else
+		return (0);
 }

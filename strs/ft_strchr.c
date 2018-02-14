@@ -6,7 +6,7 @@
 /*   By: mmanley <mmanley@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/09 15:52:11 by mmanley           #+#    #+#             */
-/*   Updated: 2018/01/11 11:58:56 by mmanley          ###   ########.fr       */
+/*   Updated: 2018/02/02 14:44:12 by mmanley          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,8 @@ char	*ft_strchr(const char *str, int c)
 
 	i = 0;
 	test = c;
+	if (!str)
+		return (NULL);
 	while (str[i])
 	{
 		if (str[i] == test)

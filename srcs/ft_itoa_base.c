@@ -6,13 +6,13 @@
 /*   By: mmanley <mmanley@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/10 15:49:57 by mmanley           #+#    #+#             */
-/*   Updated: 2018/01/10 15:51:19 by mmanley          ###   ########.fr       */
+/*   Updated: 2018/02/05 16:47:40 by mmanley          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static int			ft_rec_count(long nb, int i, int base)
+static int	ft_rec_count(long nb, int i, int base)
 {
 	if (nb < 0)
 	{
@@ -25,7 +25,7 @@ static int			ft_rec_count(long nb, int i, int base)
 	return (i);
 }
 
-static char		*cpy_it(long n, int size, int base, int sign)
+static char	*cpy_it(long n, int size, int base, int sign)
 {
 	char	*str;
 	char	*s;

@@ -6,7 +6,7 @@
 /*   By: mmanley <mmanley@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/18 18:49:44 by mmanley           #+#    #+#             */
-/*   Updated: 2018/01/18 18:51:18 by mmanley          ###   ########.fr       */
+/*   Updated: 2018/02/05 16:47:28 by mmanley          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,5 +20,5 @@ double		ft_dim(double a, double b)
 	if (res < 0)
 		return (-res);
 	else
-		return(res);
+		return (res);
 }

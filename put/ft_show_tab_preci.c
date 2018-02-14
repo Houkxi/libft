@@ -1,27 +1,47 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlen.c                                        :+:      :+:    :+:   */
+/*   ft_show_tab_preci.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mmanley <mmanley@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/11/08 15:47:17 by mmanley           #+#    #+#             */
-/*   Updated: 2018/02/01 15:40:49 by mmanley          ###   ########.fr       */
+/*   Created: 2017/12/07 10:50:25 by mmanley           #+#    #+#             */
+/*   Updated: 2018/02/05 19:26:53 by mmanley          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <string.h>
+#include <unistd.h>
 #include "libft.h"
 
-size_t	ft_strlen(const char *str)
+void	ft_show_tab_preci(int **tab, int sizey, int sizex, int pre)
 {
-	int i;
+	int k;
+	int j;
+	int pr;
 
-	i = 0;
-	if (str)
+	k = 0;
+	j = 0;
+	pr = 0;
+	if (tab)
 	{
-		while (str[i])
-			i++;
+		while (k < sizey)
+		{
+			while (j < sizex)
+			{
+				pr = rec_nbr_count(tab[k][j], 0, 10);
+				ft_putnbr(tab[k][j]);
+				while (pr < pre)
+				{
+					ft_putchar(' ');
+					pr++;
+				}
+				j++;
+				pr = 0;
+			}
+			ft_putchar('\n');
+			j = 0;
+			k++;
+		}
 	}
-	return (i);
 }

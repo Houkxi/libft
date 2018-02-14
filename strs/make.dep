@@ -1,4 +1,4 @@
-SRC += $(addprefix strs/, ft_count_btw.c\
+SRCS += $(addprefix strs/, ft_count_btw.c\
 		ft_strcat.c\
 		ft_strchr.c\
 		ft_strcmp.c\
