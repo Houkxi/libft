@@ -1,38 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strjoin.c                                       :+:      :+:    :+:   */
+/*   ft_memjoin.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mmanley <mmanley@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/11/17 11:28:50 by mmanley           #+#    #+#             */
-/*   Updated: 2018/03/09 18:03:37 by mmanley          ###   ########.fr       */
+/*   Created: 2018/03/13 15:39:26 by mmanley           #+#    #+#             */
+/*   Updated: 2018/03/22 15:04:47 by mmanley          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <string.h>
 #include "libft.h"
 
-char	*ft_strjoin(const char *s1, const char *s2)
+void				*ft_memjoin(void *s1, void *s2, size_t len1, size_t len2)
 {
+	unsigned char	*cur;
 	char			*new;
-	size_t			counter1;
-	size_t			counter2;
 
+	cur = (unsigned char*)s1;
 	if (s1 == NULL && s2 != NULL)
-		return (ft_strdup(s2));
+		return (ft_memdup(s2, len2));
 	else if (s1 != NULL && s2 == NULL)
-		return (ft_strdup(s1));
-	if (s1 != NULL && s2 != NULL)
+		return (ft_memdup(s1, len1));
+	else if (s1 && s2)
 	{
-		counter1 = ft_strlen(s1);
-		counter2 = ft_strlen(s2);
-		if (!(new = (char*)malloc(1 * (counter1 + counter2 + 1))))
+		if (!(new = (char*)malloc(len1 + len2 + 1)))
 			return (NULL);
-		ft_bzero(new, counter1 + counter2);
-		ft_strcpy(new, s1);
-		ft_strncat(new, s2, counter2);
-		new[counter1 + counter2] = '\0';
+		ft_bzero(new, len1 + len2);
+		ft_memcpy(new, s1, len1);
+		ft_memcpy(&new[len1], s2, len2);
+		new[len1 + len2] = '\0';
 		return (new);
 	}
 	else

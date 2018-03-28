@@ -6,7 +6,7 @@
 /*   By: mmanley <mmanley@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/10 16:28:10 by mmanley           #+#    #+#             */
-/*   Updated: 2018/02/14 15:55:12 by mmanley          ###   ########.fr       */
+/*   Updated: 2018/03/28 12:53:13 by mmanley          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,34 @@
 # include <string.h>
 # include <stdlib.h>
 # include <math.h>
+#include "ft_printf.h"
+
+# define DONT_CLEAN	0
+# define CLEAN_FIRST	1
+# define CLEAN_LAST	2
+# define CLEAN_BOTH	3
+
+# define WHITE		"\x1B[0m"
+# define RED			"\x1B[31m"
+# define GREEN		"\x1B[32m"
+# define YELLOW		"\x1B[33m"
+# define BLUE		"\x1B[34m"
+# define MAGENTA		"\x1B[35m"
+# define CYAN		"\x1B[36m"
+
+# define MAX_INT		2147483647
+# define MIN_INT		-2147483648
+
+# define SIZE_BUF_SHOW	80
+# define SIZE_BUF		80
+# define EOL			0
+# define PUT_CHAR		1
+# define RESET			-1
+# define ING			2
+
+# define DECIMAL		10
+# define EXA			16
+# define OCTAL			8
 
 typedef	struct		s_list
 {
@@ -52,6 +80,9 @@ void				*ft_memchr(const void *s, int c, size_t n);
 int					ft_memcmp(const void *s1, const void *s2, size_t n);
 void				*ft_memcpy(void *dst, const void *src, size_t n);
 void				ft_memdel(void **ap);
+void				*ft_memdup(void *s, size_t len);
+void				*ft_memjoin(void *s1, void *s2, size_t len1, size_t len2);
+void				*ft_memjoin_free(void *s1, void *s2, int len[2], int ch);
 void				*ft_memmove(void *dst, const void *src, size_t len);
 void				*ft_memset(void *dest, int c, size_t len);
 char				**ft_newtab(int yaxis, int xaxis, char c);
@@ -67,6 +98,7 @@ void				ft_putnbr_fd(int nb, int fd);
 void				ft_putnbr(int nb);
 void				ft_putstr_fd(char const *str, int fd);
 void				ft_putstr(char const *str);
+char				*ft_put_to_lower(char *s);
 int					rec_nbr_count(long nb, int i, int base);
 int					ft_rec_power(int nb, int power);
 void				ft_show_tab(char **tab);
@@ -105,5 +137,6 @@ char				*ft_strtrim(char const *s);
 void				ft_tabcpy(char **dst, char **src);
 int					ft_tolower(int c);
 int					ft_toupper(int c);
+void				ft_temporize(size_t sycl);
 
 #endif

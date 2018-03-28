@@ -1,28 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.h                                    :+:      :+:    :+:   */
+/*   ft_memdup.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mmanley <mmanley@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/12/29 22:22:41 by mmanley           #+#    #+#             */
-/*   Updated: 2018/03/01 15:37:22 by mmanley          ###   ########.fr       */
+/*   Created: 2018/03/13 15:48:54 by mmanley           #+#    #+#             */
+/*   Updated: 2018/03/13 15:54:04 by mmanley          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef GET_NEXT_LINE_H
-# define GET_NEXT_LINE_H
+#include "libft.h"
 
-# include <stdlib.h>
-# include <string.h>
-# include <fcntl.h>
-# include <unistd.h>
-# include "libft.h"
-# include <limits.h>
-# ifndef BUFF_SIZE
-#  define BUFF_SIZE 50
-# endif
+void		*ft_memdup(void *s, size_t len)
+{
+	char	*new;
 
-int		get_next_line(const int fd, char **line);
-
-#endif
+	if (s)
+	{
+		if (!(new = (char*)malloc(len + 1)))
+			return (NULL);
+		ft_memcpy(new, s, len);
+		new[len] = '\0';
+		return (new);
+	}
+	return (NULL);
+}

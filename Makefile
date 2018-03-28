@@ -6,7 +6,7 @@
 #    By: mmanley <mmanley@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/11/08 11:58:31 by mmanley           #+#    #+#              #
-#    Updated: 2018/02/05 19:13:59 by mmanley          ###   ########.fr        #
+#    Updated: 2018/03/28 12:46:11 by mmanley          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -52,12 +52,14 @@ OBJS = $(addprefix $(OBJ_PATH), $(OBJS_NAME))
 all : $(NAME)
 
 $(NAME) : objs $(OBJS)
+	@make -C ft_printf
+	@cp ft_printf/libftprintf.a ./libft.a
 	@ar rc $(NAME) $(OBJS)
 	@ranlib $(NAME)
 	@echo "\n${GREEN}Library build finished"
 
 $(OBJ_PATH)%.o: %.c
-	@./gen_c.sh .
+	@./dot.sh .
 	@$(CC) $(FLAGS) -o $@ -c $< -I $(INC)
 
 objs:
@@ -69,16 +71,15 @@ objs:
 	@mkdir -p objs/srcs
 	@mkdir -p objs/put
 
-test :
-	./gen_c.sh $(SRC_PATH)
-
 clean :
+	@cd ft_printf && $(MAKE) clean && cd ..
 	@rm -rf objs
 	@rm -rf $(OBJS_PATH)
 
 fclean : clean
+	@cd ft_printf && $(MAKE) fclean && cd ..
 	@rm -rf $(NAME)
 	@echo "${RED}Wanted files deleted : .a & .o"
-	@echo "${GREEN}"
+	@echo  "${GREEN}"
 
 re : fclean all

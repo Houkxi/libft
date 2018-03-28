@@ -1,28 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.h                                    :+:      :+:    :+:   */
+/*   ft_put_to_lower.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mmanley <mmanley@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/12/29 22:22:41 by mmanley           #+#    #+#             */
-/*   Updated: 2018/03/01 15:37:22 by mmanley          ###   ########.fr       */
+/*   Created: 2018/02/15 13:35:30 by mmanley           #+#    #+#             */
+/*   Updated: 2018/02/15 13:43:19 by mmanley          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef GET_NEXT_LINE_H
-# define GET_NEXT_LINE_H
+#include "libft.h"
 
-# include <stdlib.h>
-# include <string.h>
-# include <fcntl.h>
-# include <unistd.h>
-# include "libft.h"
-# include <limits.h>
-# ifndef BUFF_SIZE
-#  define BUFF_SIZE 50
-# endif
+char	*ft_put_to_lower(char *s)
+{
+	int x;
 
-int		get_next_line(const int fd, char **line);
-
-#endif
+	x = 0;
+	while (s[x])
+	{
+		if (s[x] && s[x] >= 65 && s[x] <= 90)
+			s[x] += 32;
+		x++;
+	}
+	return (s);
+}

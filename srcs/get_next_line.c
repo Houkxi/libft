@@ -6,143 +6,73 @@
 /*   By: mmanley <mmanley@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/03 17:51:04 by mmanley           #+#    #+#             */
-/*   Updated: 2018/01/08 14:29:52 by mmanley          ###   ########.fr       */
+/*   Updated: 2018/03/01 16:03:32 by mmanley          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 
-int					ft_occ_counter(char *s, char c)
+static int		line_cpy(char **line, char **s)
 {
-	int				count;
-	int				i;
+	int			x;
+	int			len;
+	char		*tmp;
 
-	count = 0;
-	i = 0;
-	if (!s && !*s)
-		return (-1);
-	while (s[i])
-	{
-		if (s[i] && s[i] == c)
-		{
-			count++;
-			i++;
-		}
-		else if (s[i] && s[i] != c)
-		{
-			i++;
-		}
-	}
-	return (count);
-}
-
-char				*ft_strbetween(char *s, char c, int *st, size_t sz)
-{
-	char			*new;
-	size_t			tmp;
-	int				end;
-
-	tmp = 0;
-	end = 0;
-	if (s != NULL)
-	{
-		while (s[tmp] && s[tmp++] != c)
-			sz++;
-		new = ft_memalloc(sz);
-		tmp = 0;
-		sz = 0;
-		while (s[tmp] && s[tmp] != c)
-		{
-			new[sz] = s[tmp];
-			tmp++;
-			sz++;
-		}
-		*st = tmp;
-		new[sz] = '\0';
-		return (new);
-	}
-	return (NULL);
-}
-
-char				*new_line(char **s, char *line, int eof)
-{
-	int				len;
-	int				start;
-	char			*tmp;
-
-	len = ft_strlen(*s);
-	start = 0;
-	if ((line = ft_strbetween(*s, '\n', &start, 0)) == NULL)
-		return (NULL);
-	start++;
-	len -= start;
-	if (eof == 0 && (ft_occ_counter(*s, '\n')) == 0)
-	{
-		if ((tmp = ft_strsub(*s, 0, 0)) == NULL)
-			return (NULL);
-		ft_strclr(tmp);
-	}
+	x = 0;
+	len = ft_strlen(*line);
+	while (line[0][x] && line[0][x] != '\n')
+		x++;
+	tmp = *s;
+	if (line[0][x + 1])
+		tmp = ft_strncpy(*s, &(line[0][x + 1]), len - x);
 	else
-	{
-		if ((tmp = ft_strsub(*s, start, len)) == NULL)
-			return (NULL);
-	}
-	free(*s);
-	*s = tmp;
-	return (line);
+		ft_bzero(*s, BUFF_SIZE + 1);
+	line[0][x] = '\0';
+	return (1);
 }
 
-int					ft_reader(char **s, int fd)
+static int		get_line(char **s, char **line, int fd)
 {
-	char			buff[BUFF_SIZE + 1];
-	int				occ;
-	int				eof;
-	char			*tmp;
+	char		*tmp;
+	int			eof;
 
-	if (!*s)
-		*s = ft_memalloc(sizeof(char));
-	while ((eof = read(fd, buff, BUFF_SIZE)) != 0)
+	tmp = NULL;
+	while ((ft_strchr(line[0], '\n')) == NULL &&
+			(eof = read(fd, s[fd], BUFF_SIZE)) > 0)
 	{
-		if (eof == -1)
-			return (-1);
-		buff[eof] = '\0';
-		tmp = *s;
-		if ((*s = ft_strjoin(tmp, buff)) == NULL)
-			return (-1);
-		free(tmp);
-		if ((occ = ft_occ_counter(*s, '\n')) != 0)
-			return (1);
+		s[fd][eof] = '\0';
+		if (eof > 0)
+		{
+			tmp = line[0];
+			if (!(line[0] = ft_strjoin_free(tmp, s[fd], 1)))
+				return (-1);
+			ft_bzero(s[fd], BUFF_SIZE + 1);
+		}
 	}
-	if ((occ = ft_occ_counter(*s, '\n')) != 0 && eof == 0)
-		return (1);
-	return (0);
+	return (eof);
 }
 
-int					get_next_line(const int fd, char **line)
+int				get_next_line(int fd, char **line)
 {
-	static char		**s;
-	int				eof;
-	int				occ;
-	int				size;
+	static char	**s = NULL;
+	int			eof;
 
-	if (fd < 0 || BUFF_SIZE <= 0 || !line)
+	if (fd < 0 || fd > OPEN_MAX || BUFF_SIZE <= 0 || !line)
 		return (-1);
+	*line = NULL;
 	if (!s)
-		s = (char**)malloc(sizeof(char*) * OPEN_MAX + 1);
-	if ((eof = ft_reader(&s[fd], fd)) == 1)
-	{
-		*line = new_line(&s[fd], *line, eof);
-		return (1);
-	}
-	if (eof == -1)
-		return (-1);
-	if (eof == 0 && (occ = ft_occ_counter(s[fd], '\n')) == 0 &&
-		(size = ft_strlen(s[fd])) != 0)
-	{
-		*line = new_line(&s[fd], *line, eof);
-		return (1);
-	}
-	if (*line)
-		ft_bzero(*line, ft_strlen(*line));
-	return (0);
+		if (!(s = (char**)malloc(sizeof(char*) * OPEN_MAX + 1)))
+			return (-1);
+	if (!s[fd])
+		if (!(s[fd] = (char*)ft_memalloc(BUFF_SIZE + 1)))
+			return (-1);
+	if (s[fd])
+		if (!(*line = ft_strjoin(*line, s[fd])))
+			return (-1);
+	eof = get_line(s, &line[0], fd);
+	if (*line && line[0][0] && eof >= 0)
+		return (line_cpy(&line[0], &s[fd]));
+	ft_strdel(&s[fd]);
+	ft_strdel(s);
+	return (eof);
 }

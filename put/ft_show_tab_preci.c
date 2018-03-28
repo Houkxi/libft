@@ -6,7 +6,7 @@
 /*   By: mmanley <mmanley@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/07 10:50:25 by mmanley           #+#    #+#             */
-/*   Updated: 2018/02/05 19:26:53 by mmanley          ###   ########.fr       */
+/*   Updated: 2018/03/16 13:22:47 by mmanley          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,11 +31,8 @@ void	ft_show_tab_preci(int **tab, int sizey, int sizex, int pre)
 			{
 				pr = rec_nbr_count(tab[k][j], 0, 10);
 				ft_putnbr(tab[k][j]);
-				while (pr < pre)
-				{
+				while (pr++ < pre)
 					ft_putchar(' ');
-					pr++;
-				}
 				j++;
 				pr = 0;
 			}

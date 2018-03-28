@@ -6,7 +6,7 @@
 /*   By: mmanley <mmanley@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/10 12:06:14 by mmanley           #+#    #+#             */
-/*   Updated: 2017/11/17 11:18:18 by mmanley          ###   ########.fr       */
+/*   Updated: 2018/03/16 13:21:57 by mmanley          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,14 +14,6 @@
 
 void	ft_bzero(void *s, size_t n)
 {
-	char	*src;
-	size_t	i;
-
-	src = s;
-	i = 0;
-	while (i < n)
-	{
-		src[i] = 0;
-		i++;
-	}
+	if (n)
+		ft_memset(s, 0, n);
 }

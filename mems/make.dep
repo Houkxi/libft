@@ -13,4 +13,7 @@ SRCS += $(addprefix mems/, ft_deltab.c\
 		ft_strjoin.c\
 		ft_strsub.c\
 		ft_strsplit.c\
-		ft_strjoin_free.c)
+		ft_strjoin_free.c\
+		ft_memjoin.c\
+		ft_memdup.c\
+		ft_memjoin_free.c)

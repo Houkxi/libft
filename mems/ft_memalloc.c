@@ -6,7 +6,7 @@
 /*   By: mmanley <mmanley@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/15 18:03:54 by mmanley           #+#    #+#             */
-/*   Updated: 2018/01/05 19:35:12 by mmanley          ###   ########.fr       */
+/*   Updated: 2018/03/06 10:49:15 by mmanley          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,7 @@ void	*ft_memalloc(size_t size)
 {
 	void *alc;
 
-	if ((alc = malloc((size + 1))) == NULL)
+	if ((alc = (void*)malloc((size + 1))) == NULL)
 		return (NULL);
-	ft_bzero(alc, size);
 	return (alc);
 }

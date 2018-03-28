@@ -6,7 +6,7 @@
 /*   By: mmanley <mmanley@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/06 15:20:20 by mmanley           #+#    #+#             */
-/*   Updated: 2018/02/02 18:41:02 by mmanley          ###   ########.fr       */
+/*   Updated: 2018/03/13 15:51:40 by mmanley          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,8 +23,6 @@ char	*ft_strdup(const char *s1)
 		if (!(dest = (char*)malloc(sizeof(char) * (ft_strlen(s1) + 1))))
 			return (NULL);
 		i = 0;
-		if (!dest)
-			return (NULL);
 		while (s1[i])
 		{
 			dest[i] = s1[i];

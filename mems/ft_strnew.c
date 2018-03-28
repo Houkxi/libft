@@ -6,7 +6,7 @@
 /*   By: mmanley <mmanley@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/16 11:28:48 by mmanley           #+#    #+#             */
-/*   Updated: 2017/11/17 11:20:57 by mmanley          ###   ########.fr       */
+/*   Updated: 2018/03/12 11:31:55 by mmanley          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,9 +18,9 @@ char	*ft_strnew(size_t size)
 {
 	char *str;
 
-	str = (char*)malloc(sizeof(char) * (size + 1));
-	if (str == NULL)
+	if (!(str = (char*)malloc(sizeof(char) * (size + 1))))
 		return (NULL);
-	ft_bzero(str, size + 1);
+	str[size] = '\0';
+	ft_bzero(str, size);
 	return (str);
 }
