@@ -6,7 +6,7 @@
 /*   By: mmanley <mmanley@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/10 16:28:10 by mmanley           #+#    #+#             */
-/*   Updated: 2018/03/28 12:53:13 by mmanley          ###   ########.fr       */
+/*   Updated: 2018/05/12 14:56:07 by mmanley          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,8 @@
 # include <string.h>
 # include <stdlib.h>
 # include <math.h>
-#include "ft_printf.h"
+# include "ft_printf.h"
+# include "get_next_line.h"
 
 # define DONT_CLEAN	0
 # define CLEAN_FIRST	1
@@ -23,11 +24,11 @@
 # define CLEAN_BOTH	3
 
 # define WHITE		"\x1B[0m"
-# define RED			"\x1B[31m"
+# define RED		"\x1B[31m"
 # define GREEN		"\x1B[32m"
 # define YELLOW		"\x1B[33m"
 # define BLUE		"\x1B[34m"
-# define MAGENTA		"\x1B[35m"
+# define MAGENTA	"\x1B[35m"
 # define CYAN		"\x1B[36m"
 
 # define MAX_INT		2147483647
@@ -51,7 +52,8 @@ typedef	struct		s_list
 	struct s_list	*next;
 	struct s_list	*prev;
 }					t_list;
-int					ft_atoi(const char *str);
+long long			ft_atoi(const char *str);
+long long			ft_atoll(const char *str);
 int					ft_atoi_base(char *s, char *base);
 void				ft_bzero(void *s, size_t n);
 long				ft_basic_op(long n1, long n2, char op);
@@ -88,6 +90,7 @@ void				*ft_memset(void *dest, int c, size_t len);
 char				**ft_newtab(int yaxis, int xaxis, char c);
 int					ft_occ_counter(char *s, char c);
 int					ft_occ_pos(const char *str, int c);
+char				**option_check(char **av, int ac, int *opt);
 void				ft_print_bits(unsigned char octet, int size);
 void				ft_print_bits_int(unsigned int octet, int size);
 void				ft_putchar_fd(char c, int fd);

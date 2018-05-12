@@ -6,7 +6,7 @@
 /*   By: mmanley <mmanley@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/23 11:46:42 by mmanley           #+#    #+#             */
-/*   Updated: 2017/12/01 07:30:51 by mmanley          ###   ########.fr       */
+/*   Updated: 2018/04/13 13:44:30 by mmanley          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ t_list	*ft_lstnew(void const *content, size_t content_size)
 {
 	t_list *newlst;
 
-	if ((newlst = (t_list*)malloc(sizeof(t_list))) == 0)
+	if ((newlst = (t_list*)malloc(sizeof(t_list))) == NULL)
 		return (NULL);
 	newlst->next = NULL;
 	if (!content)
@@ -28,8 +28,7 @@ t_list	*ft_lstnew(void const *content, size_t content_size)
 	}
 	if (content)
 	{
-		if ((newlst->content =
-			(void*)malloc(content_size)) == 0)
+		if ((newlst->content = malloc(content_size)) == NULL)
 		{
 			free(newlst);
 			return (NULL);

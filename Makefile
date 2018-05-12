@@ -6,7 +6,7 @@
 #    By: mmanley <mmanley@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/11/08 11:58:31 by mmanley           #+#    #+#              #
-#    Updated: 2018/03/28 12:46:11 by mmanley          ###   ########.fr        #
+#    Updated: 2018/05/12 12:53:18 by mmanley          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,25 +18,15 @@ FLAGS = -Wall -Wextra -Werror
 
 INC = includes/
 
-OBJ_INC = ../includes
+PRINTF = libftprintf.a
 
 OBJ_PATH = objs/
-
-SRC_PATH = srcs/
-
-SRC_L = lst_ch/
-
-SRC_P = put/
-
-SRC_S = strs/
-
-SRC_M = mems/
-
-SRC_N = nbrs/
 
 RED = \x1b[31m
 
 GREEN = \x1b[32m
+
+WHITE = \x1b[0m
 
 include nbrs/make.dep
 include mems/make.dep
@@ -49,18 +39,23 @@ OBJS_NAME =	$(SRCS:%.c=%.o)
 
 OBJS = $(addprefix $(OBJ_PATH), $(OBJS_NAME))
 
-all : $(NAME)
+all : $(PRINTF) $(NAME)
 
-$(NAME) : objs $(OBJS)
-	@make -C ft_printf
+$(NAME) : objs $(OBJS) info
 	@cp ft_printf/libftprintf.a ./libft.a
 	@ar rc $(NAME) $(OBJS)
 	@ranlib $(NAME)
-	@echo "\n${GREEN}Library build finished"
+
+$(PRINTF) :
+	@make -C ft_printf
 
 $(OBJ_PATH)%.o: %.c
 	@./dot.sh .
 	@$(CC) $(FLAGS) -o $@ -c $< -I $(INC)
+
+info :
+	@echo "${GREEN}\033[A\033[J${WHITE}"
+	@echo "${WHITE}libft.a${GREEN}			DONE${WHITE}"
 
 objs:
 	@mkdir -p objs
@@ -75,11 +70,11 @@ clean :
 	@cd ft_printf && $(MAKE) clean && cd ..
 	@rm -rf objs
 	@rm -rf $(OBJS_PATH)
+	@echo "${WHITE}Status objs :${RED}		DEL${GREEN}"
 
 fclean : clean
 	@cd ft_printf && $(MAKE) fclean && cd ..
 	@rm -rf $(NAME)
-	@echo "${RED}Wanted files deleted : .a & .o"
-	@echo  "${GREEN}"
+	@echo "${WHITE}Status libs :${RED}		DEL${GREEN}"
 
 re : fclean all

@@ -6,7 +6,7 @@
 /*   By: mmanley <mmanley@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/20 15:17:38 by mmanley           #+#    #+#             */
-/*   Updated: 2017/11/24 19:37:40 by mmanley          ###   ########.fr       */
+/*   Updated: 2018/05/12 14:13:22 by mmanley          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,8 @@ static char	**tab_creator(char c, const char *s, char **tab, int i)
 		}
 		if (i != 0)
 		{
-			tab[j] = ft_strnew(i);
+			if (!(tab[j] = ft_strnew(i)))
+				return (NULL);
 			j++;
 			i = 0;
 		}
@@ -93,7 +94,11 @@ char		**ft_strsplit(const char *s, char c)
 	if ((tab = (char**)malloc(sizeof(char*) * (counted + 1))) == 0)
 		return (NULL);
 	tab[counted] = NULL;
-	tab_creator(c, s, tab, 0);
+	if (!(tab_creator(c, s, tab, 0)))
+	{
+		ft_deltab(tab);
+		return (NULL);
+	}
 	word_cpy(c, s, tab, 0);
 	return (tab);
 }
