@@ -1,33 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_atoll.c                                         :+:      :+:    :+:   */
+/*   ft_tablen.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mmanley <mmanley@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/05/12 13:42:50 by mmanley           #+#    #+#             */
-/*   Updated: 2018/05/14 14:12:22 by mmanley          ###   ########.fr       */
+/*   Created: 2018/05/15 13:06:58 by mmanley           #+#    #+#             */
+/*   Updated: 2018/05/15 13:07:08 by mmanley          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-long long		ft_atoll(const char *str)
+int			ft_tablen(char **tab)
 {
-	int			i;
-	int			n;
-	long long	res;
+	int		y;
 
-	i = 0;
-	n = 1;
-	res = 0;
-	while (str[i] == 32 || (str[i] >= 9 && str[i] <= 13))
-		i++;
-	if (str[i] == '-')
-		n = -1;
-	if (str[i] == '+' || str[i] == '-')
-		i++;
-	while (str[i] >= '0' && str[i] <= '9')
-		res = (res * 10) + str[i++] - 48;
-	return (res * n);
+	y = 0;
+	if (!tab || !*tab)
+		return (-1);
+	while (tab[y])
+		y++;
+	return (y);
 }

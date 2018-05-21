@@ -6,7 +6,7 @@
 /*   By: mmanley <mmanley@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/08 14:33:57 by mmanley           #+#    #+#             */
-/*   Updated: 2018/05/12 13:44:19 by mmanley          ###   ########.fr       */
+/*   Updated: 2018/05/12 15:07:17 by mmanley          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ static int				white_space_counter(char *tmp, int i, int *sign)
 	return (i);
 }
 
-long long						ft_atoi(const char *str)
+long long				ft_atoi(const char *str)
 {
 	int					i;
 	long long			a;

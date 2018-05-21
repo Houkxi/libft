@@ -6,7 +6,7 @@
 #    By: mmanley <mmanley@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/11/08 11:58:31 by mmanley           #+#    #+#              #
-#    Updated: 2018/05/12 12:53:18 by mmanley          ###   ########.fr        #
+#    Updated: 2018/05/17 20:41:45 by mmanley          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -70,11 +70,11 @@ clean :
 	@cd ft_printf && $(MAKE) clean && cd ..
 	@rm -rf objs
 	@rm -rf $(OBJS_PATH)
-	@echo "${WHITE}Status objs :${RED}		DEL${GREEN}"
+	@echo "${WHITE}Libft objs :${RED}		DEL${GREEN}"
 
 fclean : clean
 	@cd ft_printf && $(MAKE) fclean && cd ..
 	@rm -rf $(NAME)
-	@echo "${WHITE}Status libs :${RED}		DEL${GREEN}"
+	@echo "${WHITE}Libft libs :${RED}		DEL${GREEN}"
 
 re : fclean all

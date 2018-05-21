@@ -1,33 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_atoll.c                                         :+:      :+:    :+:   */
+/*   ft_int_occ.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mmanley <mmanley@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/05/12 13:42:50 by mmanley           #+#    #+#             */
-/*   Updated: 2018/05/14 14:12:22 by mmanley          ###   ########.fr       */
+/*   Created: 2018/05/12 16:05:58 by mmanley           #+#    #+#             */
+/*   Updated: 2018/05/12 16:06:14 by mmanley          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-long long		ft_atoll(const char *str)
+int			ft_int_occ(int *tab, int curr, int size)
 {
-	int			i;
-	int			n;
-	long long	res;
+	int		i;
 
 	i = 0;
-	n = 1;
-	res = 0;
-	while (str[i] == 32 || (str[i] >= 9 && str[i] <= 13))
-		i++;
-	if (str[i] == '-')
-		n = -1;
-	if (str[i] == '+' || str[i] == '-')
-		i++;
-	while (str[i] >= '0' && str[i] <= '9')
-		res = (res * 10) + str[i++] - 48;
-	return (res * n);
+	while (i++ < size)
+		if (tab[i] == curr)
+			return (i);
+	return (-1);
 }

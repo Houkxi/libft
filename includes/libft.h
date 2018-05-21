@@ -6,7 +6,7 @@
 /*   By: mmanley <mmanley@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/10 16:28:10 by mmanley           #+#    #+#             */
-/*   Updated: 2018/05/12 14:56:07 by mmanley          ###   ########.fr       */
+/*   Updated: 2018/05/15 13:07:26 by mmanley          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,6 +60,7 @@ long				ft_basic_op(long n1, long n2, char op);
 int					ft_count_btw(char *s, char c);
 void				ft_deltab(char **tab);
 double				ft_dim(double a, double b);
+int					ft_int_occ(int *tab, int curr, int size);
 int					ft_isalnum(int c);
 int					ft_isalpha(int c);
 int					ft_isascii(int c);
@@ -137,7 +138,9 @@ char				**ft_strsplit(char const *s, char c);
 char				*ft_strstr(const char *haystack, const char *needle);
 char				*ft_strsub(const char *s, unsigned int start, size_t len);
 char				*ft_strtrim(char const *s);
+int					*ft_tabint_init(int ini, int size);
 void				ft_tabcpy(char **dst, char **src);
+int					ft_tablen(char **tab);
 int					ft_tolower(int c);
 int					ft_toupper(int c);
 void				ft_temporize(size_t sycl);
